@@ -1,0 +1,29 @@
+pipeline {
+   agent any
+   stages {
+      stage('Preparation') {
+         steps {
+           git 'https://github.com/manimike00/samplepy.git'
+         }
+      }
+      stage('Build') {
+         steps {
+           sh 'zip demo.zip index.py'
+         }
+      }
+      stage('Deployment') {
+         steps {
+            script {
+               deployLambda(awsAccessKeyId: env.AWS_ACCESS_KEY_ID, awsSecretKey: env.AWS_SECRET_ACCESS_KEY, awsRegion: "ap-south-1", functionName: "demo", updateMode: "code", role: "arn:aws:iam::173437313385:role/service-role/Demo-role-za9pz2x8", artifactLocation: "demo.zip", handler: "index.lambda_handler", memorySize: "1024", timeout: "300", runtime: "python3.7")
+            }
+         }
+      }
+      stage('Invocation') {
+         steps {
+            script {
+               invokeLambda(awsAccessKeyId: env.AWS_ACCESS_KEY_ID, awsSecretKey: env.AWS_SECRET_ACCESS_KEY, awsRegion: "ap-south-1", functionName: "demo")
+            }
+         }
+      }
+   }
+}
