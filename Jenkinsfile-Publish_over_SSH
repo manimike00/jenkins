@@ -8,10 +8,10 @@ pipeline {
                        sshPublisher(
                            publishers: [
                                sshPublisherDesc(
-                               configName: "hawksighttest",
+                               configName: "Name of the Server",
                                transfers: [
                                sshTransfer(
-                                   execCommand: "cd /home/ubuntu/hwk-srm-frontend/;pwd"
+                                   execCommand: "echo "This is Agent Node""
                                ),
                                sshTransfer(
                                    execCommand: "pwd"
