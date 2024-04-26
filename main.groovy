@@ -1,51 +1,51 @@
 
 createJobs()
 
-void createJobs() {
-    pipelineJob('job1') {
-        definition {
-            cpsScm {
-                scm {
-                    git {
-                        remote {
-                            url('https://github.com/jenkinsci/job-dsl-plugin.git')
-                        }
-                        branch('*/master')
-                    }
-                }
-                lightweight()
-            }
-        }
-    }
-}
-
 //void createJobs() {
-//    pipelineJob.with {
-//
-//        description("Test Groovy pipeline")
-//
+//    pipelineJob('job1') {
 //        definition {
-//            cps{
-//                script("""
-//pipeline {
-//
-//    agent any
-//
-//    options {
-//        ansiColor('vga')
-//        preserveStashes()
-//    }
-//
-//
-//    stages {
-//        stage('Checks') {
-//            steps{
-//                sh "echo Hello World"
+//            cpsScm {
+//                scm {
+//                    git {
+//                        remote {
+//                            url('https://github.com/jenkinsci/job-dsl-plugin.git')
+//                        }
+//                        branch('*/master')
+//                    }
+//                }
+//                lightweight()
 //            }
 //        }
-//
-//}""")
-//                sandbox()
-//            }}}
-//
+//    }
 //}
+
+void createJobs() {
+    pipelineJob("job2") {
+
+        description("Test Groovy pipeline")
+
+        definition {
+            cps{
+                script("""
+pipeline {
+
+    agent any
+
+    options {
+        ansiColor('vga')
+        preserveStashes()
+    }
+
+
+    stages {
+        stage('Checks') {
+            steps{
+                sh "echo Hello World"
+            }
+        }
+
+}""")
+                sandbox()
+            }}}
+
+}
