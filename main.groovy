@@ -31,11 +31,6 @@ pipeline {
 
     agent any
 
-    options {
-        ansiColor('vga')
-        preserveStashes()
-    }
-
 
     stages {
         stage('Checks') {
