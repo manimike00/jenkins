@@ -1,7 +1,7 @@
 package templates
 
 class DevProd {
-      static void create() {
+      static void create(pipelineJob) {
         pipelineJob("job3") {
 
             description("Test Groovy pipeline")
