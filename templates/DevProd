@@ -1,6 +1,6 @@
 package templates
 
-class pipeline {
+class DevProd {
     static void create() {
         pipelineJob("job3") {
 
