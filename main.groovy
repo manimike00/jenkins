@@ -43,6 +43,7 @@ pipeline {
                 sh "echo Hello World"
             }
         }
+    }        
 
 }""")
                 sandbox()
