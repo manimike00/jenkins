@@ -4,5 +4,6 @@ import hudson.model.*
 createJobs()
 
 void createJobs() {
-    DevProd.create(pipelineJob)
+    DevProd devProd = new DevProd()
+    devProd.create(pipelineJob)
 }
