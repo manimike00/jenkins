@@ -1,4 +1,4 @@
-import templates.*
+package templates
 
 class DevProd {
       static void create() {
